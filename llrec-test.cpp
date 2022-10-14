@@ -77,18 +77,30 @@ int main(int argc, char* argv[])
         cout << "Please provide an input file" << endl;
         return 1;
     }
-
     // -----------------------------------------------
     // Feel free to update any code below this point
     // -----------------------------------------------
     Node* head = readList(argv[1]);
     cout << "Original list: ";
     print(head);
+    Even even;
+    //Odd odd;
+    /*
+    Node* smaller = nullptr;
+    Node* larger = nullptr;
+    int tar = 12;
+    llpivot(head, smaller, larger, tar);
+    cout << "smaller is:";
+    print(smaller);
+    cout << endl << "larger is:";
+    print(larger);
+    */
+    head = llfilter(head, even);
+    cout << "updated list is: ";
+    print(head);
+
 
     // Test out your linked list code
-
-
-
     
     return 0;
 

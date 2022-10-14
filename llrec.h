@@ -14,6 +14,21 @@ struct Node
 };
 
 
+struct Odd
+{
+  bool operator()(int val){
+    return (val % 2);
+  }
+};
+
+struct Even
+{
+  bool operator()(int val){
+    return !(val % 2);
+  }
+};
+
+
 /**
  * Given a linked list pointed to by head, creates two lists
  * where all values less than or equal to the pivot value are
@@ -47,6 +62,10 @@ struct Node
  */
 void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot);
 
+//helper function used by llpivot that will split the list and
+//set the value of the head node of the og list to NULL upon completion.
+Node* split(Node *&head, Node *&smaller, Node*&larger, int pivot);
+
 /**
  * Given a linked list pointed to by head, removes (filters out) nodes
  * whose value does not meet the criteria given by the predicate
@@ -78,11 +97,30 @@ Node* llfilter(Node* head, Comp pred);
 template <typename Comp>
 Node* llfilter(Node* head, Comp pred)
 {
+  //psuedocode.
+  //traverse through the list.
+  //at null node, returns.
+  if(head == nullptr){
+    return nullptr;
+  }
+  //should something else equal llfilter.
+  //every call to this function will return a pointer to the linked list ahead of head
+  head->next = llfilter(head->next, pred);
+  //setting head = head + the list ahead of it.
+
+  if(pred(head->val)){
+    //head = some work on what is ahead of it.
+    //head becomes everything ahead of it.
+    //head = head->next;
+    Node* temp = head;
+    head = head->next;
+    delete temp;
+  }
+  //if condition is not met will return unaltered list.
+  return head;
     //*********************************************
     // Provide your implementation below
     //*********************************************
-
-
 }
 
 #endif
