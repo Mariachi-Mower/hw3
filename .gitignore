@@ -1,0 +1,11 @@
+heap_test/
+llrec-test
+stack.o
+heaped.cpp
+heaps
+logicsim/circuit.o
+logicsim/gate.o
+logicsim/logicsim
+logicsim/logicsim.o
+logicsim/plantuml.jar
+logicsim/wire.o
